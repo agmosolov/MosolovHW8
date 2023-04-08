@@ -40,7 +40,7 @@ final class QuestionViewController: UIViewController {
         rangedSlider.maximumValue = answerCount
         rangedSlider.value = answerCount / 2
     }
-
+    
     // MARK: - IB Actions
     @IBAction func singleButtonAnswerPressed(_ sender: UIButton) {
         guard let buttonIndex = singleButtons.firstIndex(of: sender) else { return }
@@ -142,5 +142,10 @@ private extension QuestionViewController {
         }
         
         performSegue(withIdentifier: "showResult", sender: nil)
+    }
+    
+    internal override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let resultVC = segue.destination as? ResultViewController else { return }
+        resultVC.relustsOfQuiz = answersChosen
     }
 }
