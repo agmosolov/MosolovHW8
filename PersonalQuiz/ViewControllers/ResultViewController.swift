@@ -26,6 +26,8 @@ final class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.hidesBackButton = true
+        
         for animal in relustsOfQuiz {
             animalCounter.append(animal.animal.rawValue)
         }
