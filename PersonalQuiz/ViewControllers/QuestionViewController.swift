@@ -65,6 +65,11 @@ final class QuestionViewController: UIViewController {
         nextQuestion()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let resultVC = segue.destination as? ResultViewController else { return }
+        resultVC.relustsOfQuiz = answersChosen
+    }
+    
     deinit {
         print("\(type(of: self)) has been deallocated")
     }
@@ -144,8 +149,5 @@ private extension QuestionViewController {
         performSegue(withIdentifier: "showResult", sender: nil)
     }
     
-    internal override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let resultVC = segue.destination as? ResultViewController else { return }
-        resultVC.relustsOfQuiz = answersChosen
-    }
+    
 }
